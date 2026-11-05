@@ -128,7 +128,7 @@ services:
 
   ms-barriodigital-audit:
     image: 726357411862.dkr.ecr.us-east-1.amazonaws.com/ms-barriodigital-audit:latest
-    container_name: barriodigital-audit
+    container_name: ms-barriodigital-audit
     restart: always
     ports:
       - "8084:8084"
