@@ -4,7 +4,17 @@ services:
   # =======================================================
   # RABBITMQ
   # =======================================================
-
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: barriodigital-rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./mq/definitions.json:/etc/rabbitmq/definitions.json:ro
+    networks:
+      - barriodigital-network
 
   # ======================================================
   # ZOOKEEPER Y KAFKA
