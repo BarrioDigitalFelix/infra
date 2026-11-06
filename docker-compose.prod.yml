@@ -91,7 +91,7 @@ services:
   # ======================================================
   ms-barriodigital-catalog:
     image: 726357411862.dkr.ecr.us-east-1.amazonaws.com/ms-barriodigital-catalog:latest
-    container_name: barriodigital-catalog
+    container_name: ms-barriodigital-catalog
     restart: always
     ports:
       - "8081:8081"
@@ -100,7 +100,7 @@ services:
 
   ms-barriodigital-requests:
     image: 726357411862.dkr.ecr.us-east-1.amazonaws.com/ms-barriodigital-requests:latest
-    container_name: barriodigital-requests
+    container_name: ms-barriodigital-requests
     restart: always
     ports:
       - "8082:8082"
@@ -115,7 +115,7 @@ services:
 
   ms-barriodigital-notify:
     image: 726357411862.dkr.ecr.us-east-1.amazonaws.com/ms-barriodigital-notify:latest
-    container_name: barriodigital-notify
+    container_name: ms-barriodigital-notify
     restart: always
     ports:
       - "8083:8083"
@@ -141,7 +141,7 @@ services:
 
   ms-barriodigital-report:
     image: 726357411862.dkr.ecr.us-east-1.amazonaws.com/ms-barriodigital-report:latest
-    container_name: barriodigital-report
+    container_name: ms-barriodigital-report
     restart: always
     ports:
       - "8085:8085"
