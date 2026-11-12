@@ -38,6 +38,7 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
       CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
     networks:
       - barriodigital-network
@@ -57,6 +58,8 @@ services:
         echo 'Kafka disponible. Creando topicos con politicas de retencion...'; \
         kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic requests.events --partitions 3 --replication-factor 1 --config cleanup.policy=delete --config retention.ms=2592000000; \
         kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic audit.timeline --partitions 3 --replication-factor 1 --config cleanup.policy=delete --config retention.ms=31536000000; \
+        kafka-topics --bootstrap-server kafka:9092 --alter --topic requests.events --partitions 3 || true; \
+        kafka-topics --bootstrap-server kafka:9092 --alter --topic audit.timeline --partitions 3 || true; \
         kafka-configs --bootstrap-server kafka:9092 --entity-type topics --entity-name requests.events --alter --add-config cleanup.policy=delete,retention.ms=2592000000; \
         kafka-configs --bootstrap-server kafka:9092 --entity-type topics --entity-name audit.timeline --alter --add-config cleanup.policy=delete,retention.ms=31536000000; \
         echo 'Topicos configurados exitosamente:'; \
